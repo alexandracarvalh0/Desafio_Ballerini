@@ -53,6 +53,25 @@ function calcular(){
 
 function enviar(){
 
-    var frase = document.getElementById('frase')
+    var frase = document.getElementById('frase').value
+    var fraseFormatada = frase.replace(/[^\w\d]/g,"")
+    fraseFormatada = frase.split(" ").length
+    var arrayFrase = frase.split(".")
+
+    for(i in arrayFrase){
+        if(arrayFrase[i] == ""){
+            arrayFrase.splice(i,i)
+        }
+    }
+
+    arrayFrase = arrayFrase.length
+    var letras = frase
+
+    for(i in frase){
+        letras = letras.replace(/[^\w]/g,"")
+    }
+    letras = letras.length
+    var res = document.querySelector("#res")
+    res.innerHTML = `Esse paragrafo tem ${letras} letras, ${fraseFormatada} palavras, e ${arrayFrase} frases.<br>`
 
 }
